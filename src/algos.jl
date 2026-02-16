@@ -180,7 +180,7 @@ function fft_pow2_radix4!(out::AbstractVector{T}, in::AbstractVector{U}, N::Int,
     w1 = w
     w2 = w * w1
     w3 = w * w2
-    w4 = w * w3
+    w4 = w2 * w2
 
     fft_pow2_radix4!(out, in, m, start_out                 , stride_out, start_in              , stride_in*4, w4)
     fft_pow2_radix4!(out, in, m, start_out +   m*stride_out, stride_out, start_in +   stride_in, stride_in*4, w4)
