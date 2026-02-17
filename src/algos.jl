@@ -302,7 +302,7 @@ function fft_bluestein!(
     tmp[N+1:end]      .= zero(T)
 
     sgn = -direction_sign(d)
-    @. b_series[1:N] = cispi(sgn * (0:N-1)^2 / N)
+    @. b_series[1:N] = cispi(sgn * mod((0:N-1)^2, (-N+1:N,)) / N)
     for i in 1:N
         a_series[i] = in[start_in+(i-1)*stride_in] * conj(b_series[i])
     end
